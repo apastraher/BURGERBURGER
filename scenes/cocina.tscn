@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://n7lb7101enjf"]
+
+[ext_resource type="Texture2D" uid="uid://l4y7lpn43cy7" path="res://assets/Tilesets/Objects/tableSarten.png" id="1_bhmfm"]
+[ext_resource type="Script" path="res://sarten.gd" id="2_ugjkn"]
+[ext_resource type="Texture2D" uid="uid://cluunxlovbxvw" path="res://assets/Tilesets/Objects/SartenIdle.png" id="3_gn0y1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x3y4"]
+size = Vector2(24, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_od8fb"]
+size = Vector2(48, 48)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odx32"]
+bg_color = Color(0.101961, 0.101961, 0.101961, 0.47451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6bkm"]
+bg_color = Color(0.356863, 0.701961, 0, 0.788235)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cykmw"]
+bg_color = Color(0.356863, 0.701961, 0, 0.788235)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdw8a"]
+bg_color = Color(0.964706, 0, 0.176471, 0.835294)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Cocina" type="Node2D"]
+scale = Vector2(0.75, 0.75)
+metadata/_edit_group_ = true
+
+[node name="Mesa" type="StaticBody2D" parent="."]
+collision_layer = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="Mesa"]
+z_index = 2
+texture = ExtResource("1_bhmfm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesa"]
+shape = SubResource("RectangleShape2D_1x3y4")
+
+[node name="Sarten" type="Node2D" parent="." groups=["sartenes"]]
+z_index = 2
+script = ExtResource("2_ugjkn")
+
+[node name="SartenIdle" type="Sprite2D" parent="Sarten"]
+position = Vector2(4, -9)
+scale = Vector2(0.757813, 0.757813)
+texture = ExtResource("3_gn0y1")
+
+[node name="Area2D" type="Area2D" parent="Sarten" groups=["sartenes"]]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sarten/Area2D"]
+shape = SubResource("RectangleShape2D_od8fb")
+
+[node name="ProgressBarCocinando" type="ProgressBar" parent="Sarten"]
+offset_left = -2.0
+offset_top = -35.0
+offset_right = 2.0
+offset_bottom = -17.0
+theme_override_styles/background = SubResource("StyleBoxFlat_odx32")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n6bkm")
+fill_mode = 3
+show_percentage = false
+
+[node name="ProgressBarQuemando" type="ProgressBar" parent="Sarten"]
+visible = false
+offset_left = -1.66667
+offset_top = -35.0
+offset_right = 2.33333
+offset_bottom = -17.0
+theme_override_styles/background = SubResource("StyleBoxFlat_cykmw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vdw8a")
+fill_mode = 3
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="Sarten"]

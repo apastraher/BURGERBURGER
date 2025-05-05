@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://co4uyuy2mstjt"]
+
+[ext_resource type="Script" path="res://scenes/menu.gd" id="1_a3etr"]
+[ext_resource type="StyleBox" uid="uid://bts3d6dlvsr7r" path="res://assets/buttonStyleHover.tres" id="2_1n87f"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="2_l6p16"]
+[ext_resource type="StyleBox" uid="uid://das217cjk4pqk" path="res://assets/ButtonStyleNormal.tres" id="3_uromm"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a3etr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.541176)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 124.0
+offset_right = 144.0
+offset_bottom = -53.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Jugar" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/focus = ExtResource("2_1n87f")
+theme_override_styles/hover = ExtResource("2_1n87f")
+theme_override_styles/normal = ExtResource("3_uromm")
+text = "Jugar"
+
+[node name="Opciones" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("2_1n87f")
+theme_override_styles/hover = ExtResource("2_1n87f")
+theme_override_styles/normal = ExtResource("3_uromm")
+text = "Opciones"
+
+[node name="Salir" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("2_1n87f")
+theme_override_styles/hover = ExtResource("2_1n87f")
+theme_override_styles/normal = ExtResource("3_uromm")
+text = "Salir"
+
+[node name="Label" type="Label" parent="."]
+texture_repeat = 1
+layout_mode = 0
+offset_left = 67.0
+offset_top = 45.0
+offset_right = 202.0
+offset_bottom = 116.0
+theme_override_fonts/font = ExtResource("2_l6p16")
+theme_override_font_sizes/font_size = 30
+text = "VIDEOGAME 
+NAME"
+vertical_alignment = 1
