@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bk6xmp3xpml85"]
+[gd_scene load_steps=31 format=4 uid="uid://bk6xmp3xpml85"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_4sax8"]
 [ext_resource type="PackedScene" uid="uid://ddbyb28yh3aw7" path="res://scenes/character.tscn" id="1_xhgff"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dg43pi3fpue0g" path="res://scenes/timer.tscn" id="12_6cew8"]
 [ext_resource type="PackedScene" uid="uid://n7lb7101enjf" path="res://scenes/cocina.tscn" id="13_lxcw7"]
 [ext_resource type="PackedScene" uid="uid://tpgd1oxg5sg5" path="res://papelera.tscn" id="14_ngwq2"]
+[ext_resource type="PackedScene" uid="uid://c7cu56adu8gfc" path="res://scenes/cliente.tscn" id="15_o3v11"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwwo2"]
 texture = ExtResource("3_de7ht")
@@ -1676,18 +1677,24 @@ tile_set = SubResource("TileSet_ulgrf")
 
 [node name="Meat" parent="TileMapContainer" groups=["cajas"] instance=ExtResource("9_kev7v")]
 position = Vector2(375, 130)
-scale = Vector2(1, 1)
+scale = Vector2(1.5, 1.5)
 ingrediente = "carne_cruda"
 
 [node name="Bread" parent="TileMapContainer" groups=["cajas"] instance=ExtResource("9_kev7v")]
 position = Vector2(349, 130)
-scale = Vector2(1, 1)
+scale = Vector2(1.5, 1.5)
 ingrediente = "pan"
 
 [node name="Plato" parent="TileMapContainer" groups=["cajas"] instance=ExtResource("9_kev7v")]
 position = Vector2(402, 130)
-scale = Vector2(1, 1)
+scale = Vector2(1.5, 1.5)
 ingrediente = "plato"
+
+[node name="queso" parent="TileMapContainer" groups=["cajas"] instance=ExtResource("9_kev7v")]
+z_index = 2
+position = Vector2(324, 130)
+scale = Vector2(1.5, 1.5)
+ingrediente = "queso"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(85, -1)
@@ -1715,7 +1722,7 @@ shape = SubResource("RectangleShape2D_c4moy")
 
 [node name="RightWall" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 99
-position = Vector2(338.5, 176)
+position = Vector2(339, 176)
 shape = SubResource("RectangleShape2D_vsncs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -1736,8 +1743,12 @@ position = Vector2(285, 194)
 [node name="TimerNode" parent="." instance=ExtResource("12_6cew8")]
 
 [node name="Cocina" parent="." groups=["sartenes"] instance=ExtResource("13_lxcw7")]
-position = Vector2(316, 129)
+position = Vector2(283, 130)
 
 [node name="papelera" parent="." instance=ExtResource("14_ngwq2")]
 z_index = 1
 position = Vector2(405, 208)
+
+[node name="Cliente" parent="." groups=["clientes"] instance=ExtResource("15_o3v11")]
+z_index = 3
+position = Vector2(423, 175)

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7cu56adu8gfc"]
+
+[ext_resource type="Script" path="res://scenes/cliente.gd" id="1_5t4ij"]
+[ext_resource type="Texture2D" uid="uid://bm5rkxhgbf1im" path="res://assets/Tilesets/Objects/exclamacion.png" id="2_7dqka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jsaw"]
+bg_color = Color(0.0862745, 0.0862745, 0.0862745, 0.776471)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6w0c"]
+bg_color = Color(0, 0.530879, 0.0477264, 0.847059)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tejql"]
+size = Vector2(33, 20)
+
+[node name="Cliente" type="Node2D"]
+script = ExtResource("1_5t4ij")
+
+[node name="TimerPaciencia" type="Timer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 6.0
+offset_top = -27.0
+offset_right = 10.0
+offset_bottom = -11.0
+theme_override_styles/background = SubResource("StyleBoxFlat_1jsaw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_j6w0c")
+fill_mode = 2
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="." groups=["clientes"]]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-6.5, 0)
+shape = SubResource("RectangleShape2D_tejql")
+
+[node name="PedidoBocadillo" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxIngredientes" type="VBoxContainer" parent="PedidoBocadillo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = -1.05
+anchor_right = 1.3
+anchor_bottom = -0.05
+
+[node name="Exclamacion" type="Sprite2D" parent="PedidoBocadillo"]
+position = Vector2(16, -19)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7dqka")
