@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwio7l8l0n7h"]
+
+[ext_resource type="Script" path="res://dinero.gd" id="1_enfmr"]
+[ext_resource type="Texture2D" uid="uid://bleojmfg2jfuq" path="res://assets/Tilesets/Objects/dinero.png" id="2_hinsh"]
+
+[node name="Dinero" type="Node2D"]
+position = Vector2(594, 1)
+script = ExtResource("1_enfmr")
+metadata/_edit_group_ = true
+
+[node name="MoneyLabel" type="Label" parent="."]
+offset_right = 36.0
+offset_bottom = 23.0
+text = "$"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-18.5, 10.5)
+scale = Vector2(1.4375, 1.4375)
+texture = ExtResource("2_hinsh")

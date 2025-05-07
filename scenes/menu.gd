@@ -48,8 +48,8 @@ func _on_jugar_pressed():
 	get_tree().change_scene_to_file("res://scenes/map.tscn")
 
 func _on_opciones_pressed():
-	print("Abrir opciones...")
-	# Considera usar: get_tree().change_scene_to_file("res://scenes/opciones.tscn")
+	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
+	get_tree().change_scene_to_file("res://scenes/opciones.tscn")
 
 func _on_salir_pressed():
 	get_tree().quit()

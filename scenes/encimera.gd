@@ -123,6 +123,7 @@ func colocar_plato(player_pos: Vector2, textura_plato: Texture2D, ingredientes: 
 	
 	return true
 
+# Modificación aquí: Recoger objeto
 func recoger_objeto(player_pos: Vector2) -> Dictionary:
 	var pos_idx = _encontrar_posicion_mas_cercana(player_pos)
 	if pos_idx == -1 or not objetos_colocados.has(pos_idx):
@@ -140,6 +141,7 @@ func recoger_objeto(player_pos: Vector2) -> Dictionary:
 		resultado["ingredientes"].append(ingrediente["tipo"])
 		ingrediente["sprite"].queue_free()
 	
+	# Asegurarse de que la posición quede libre
 	objetos_colocados.erase(pos_idx)
 	return resultado
 

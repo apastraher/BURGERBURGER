@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ly44mp4if4q2"]
+[gd_scene load_steps=6 format=3 uid="uid://ly44mp4if4q2"]
 
 [ext_resource type="Script" path="res://scenes/ingredient_box.gd" id="1_yirke"]
 [ext_resource type="Texture2D" uid="uid://cuv8iqbclbac4" path="res://assets/Tilesets/Objects/caja_ingrediente.png" id="2_ond71"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0n1a"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xc400"]
+size = Vector2(10, 8)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 4
@@ -28,3 +31,10 @@ texture = ExtResource("3_1shwp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 2
 shape = SubResource("RectangleShape2D_h0n1a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_xc400")

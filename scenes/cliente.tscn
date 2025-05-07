@@ -1,7 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7cu56adu8gfc"]
+[gd_scene load_steps=28 format=3 uid="uid://c7cu56adu8gfc"]
 
 [ext_resource type="Script" path="res://scenes/cliente.gd" id="1_5t4ij"]
 [ext_resource type="Texture2D" uid="uid://bm5rkxhgbf1im" path="res://assets/Tilesets/Objects/exclamacion.png" id="2_7dqka"]
+[ext_resource type="Texture2D" uid="uid://dmjwnlljmbppn" path="res://assets/character/PJModelGrab.png" id="3_ah2ul"]
+[ext_resource type="Texture2D" uid="uid://c4kjhb2hxjniw" path="res://assets/character/PJModelWalkGrab.png" id="4_75pm5"]
+[ext_resource type="Texture2D" uid="uid://hrsry5r73qxd" path="res://assets/character/PJModelIdle.png" id="5_rk4wi"]
+[ext_resource type="Texture2D" uid="uid://ceghac51oivec" path="res://assets/character/PJModelWalk.png" id="6_gi1f1"]
+[ext_resource type="AudioStream" uid="uid://cyaxenjoqrdsu" path="res://assets/audio/sfx/aldeano_sound.mp3" id="7_j8hyr"]
+[ext_resource type="AudioStream" uid="uid://drghwp7x55ulx" path="res://assets/audio/sfx/aldeano_enfadado.mp3" id="8_fj2j1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jsaw"]
 bg_color = Color(0.0862745, 0.0862745, 0.0862745, 0.776471)
@@ -20,16 +26,136 @@ corner_radius_bottom_left = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tejql"]
 size = Vector2(33, 20)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_it283"]
+atlas = ExtResource("3_ah2ul")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dea5"]
+atlas = ExtResource("4_75pm5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xisy3"]
+atlas = ExtResource("4_75pm5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5yl7"]
+atlas = ExtResource("4_75pm5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhrpp"]
+atlas = ExtResource("4_75pm5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s52cr"]
+atlas = ExtResource("5_rk4wi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgxte"]
+atlas = ExtResource("5_rk4wi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6ibu"]
+atlas = ExtResource("5_rk4wi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okjf0"]
+atlas = ExtResource("5_rk4wi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymlek"]
+atlas = ExtResource("6_gi1f1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0440"]
+atlas = ExtResource("6_gi1f1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk1lb"]
+atlas = ExtResource("6_gi1f1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjskg"]
+atlas = ExtResource("6_gi1f1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y02h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it283")
+}],
+"loop": true,
+"name": &"grab",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dea5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xisy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5yl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhrpp")
+}],
+"loop": true,
+"name": &"grab_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s52cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgxte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6ibu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okjf0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymlek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0440")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk1lb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjskg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8lls"]
+size = Vector2(18, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkrfw"]
+size = Vector2(10, 5)
+
 [node name="Cliente" type="Node2D"]
 script = ExtResource("1_5t4ij")
 
 [node name="TimerPaciencia" type="Timer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 6.0
-offset_top = -27.0
-offset_right = 10.0
-offset_bottom = -11.0
+offset_left = 12.0
+offset_top = -35.0
+offset_right = 16.0
+offset_bottom = -19.0
 theme_override_styles/background = SubResource("StyleBoxFlat_1jsaw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_j6w0c")
 fill_mode = 2
@@ -49,12 +175,37 @@ offset_bottom = 40.0
 [node name="VBoxIngredientes" type="VBoxContainer" parent="PedidoBocadillo"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3
-anchor_top = -1.05
-anchor_right = 1.3
-anchor_bottom = -0.05
+anchor_left = 0.475
+anchor_top = -1.075
+anchor_right = 1.475
+anchor_bottom = -0.075
 
 [node name="Exclamacion" type="Sprite2D" parent="PedidoBocadillo"]
-position = Vector2(16, -19)
-scale = Vector2(0.5, 0.5)
+position = Vector2(14, -27)
 texture = ExtResource("2_7dqka")
+
+[node name="Character" type="CharacterBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Character"]
+position = Vector2(14, -6)
+sprite_frames = SubResource("SpriteFrames_8y02h")
+animation = &"idle"
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="Character"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/Area2D"]
+position = Vector2(14, 2)
+shape = SubResource("RectangleShape2D_t8lls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
+position = Vector2(14, 2.5)
+shape = SubResource("RectangleShape2D_qkrfw")
+
+[node name="AldeanoSound" type="AudioStreamPlayer2D" parent="Character"]
+stream = ExtResource("7_j8hyr")
+
+[node name="AldeanoEnfadadoSound" type="AudioStreamPlayer2D" parent="Character"]
+stream = ExtResource("8_fj2j1")
+volume_db = -5.073

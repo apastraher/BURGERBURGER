@@ -10,6 +10,7 @@ var sarten_cercana = null
 var papelera_cercana = null
 var cliente_cercano: Cliente = null
 
+@onready var label_dinero = get_node("../Dinero/MoneyLabel")
 @onready var hand_sprite = $ManoSprite
 @onready var body_sprite = $Sprite2D
 @onready var pickup_sound = $PickupSound
@@ -64,7 +65,8 @@ func manejar_interaccion():
 
 func recibir_recompensa(cantidad: int):
 	dinero += cantidad
-	print("Dinero recibido: ", cantidad, " | Total: ", dinero)  # Solo para debug
+	label_dinero.text = str(dinero)
+	print("Dinero recibido: ", cantidad, " | Total: ", dinero)
 
 func tiene_pedido_correcto(pedido_cliente: Array) -> bool:
 	if not ingrediente_actual or typeof(ingrediente_actual) != TYPE_DICTIONARY:
@@ -106,9 +108,10 @@ func recoger_de_encimera():
 	if obj.is_empty():
 		return
 	
-	ingrediente_actual = obj
-	mostrar_ingredientes_en_mano(obj)
+	ingrediente_actual = obj  # Asignamos el objeto recogido (diccionario) directamente a ingrediente_actual
+	mostrar_ingredientes_en_mano(obj)  # Mostrar los ingredientes si es un plato
 	pickup_sound.play()
+
 
 func mostrar_ingredientes_en_mano(data: Dictionary):
 	hand_sprite.visible = false
@@ -138,26 +141,43 @@ func mostrar_ingredientes_en_mano(data: Dictionary):
 			hand_sprite.scale = Vector2(0.7, 0.7)
 			hand_sprite.visible = true
 
+# Dentro de la función `soltar_ingrediente()`
+
 func soltar_ingrediente():
 	if not ingrediente_actual or not encimera_cercana:
 		return
 	
 	var exito = false
+	
+	# Verificamos si el ingrediente actual es un string (ingrediente simple)
 	if typeof(ingrediente_actual) == TYPE_STRING:
 		exito = encimera_cercana.colocar_objeto(
 			ingrediente_actual,
 			global_position,
 			hand_sprite.texture
 		)
-	elif typeof(ingrediente_actual) == TYPE_DICTIONARY and ingrediente_actual["tipo"] == "plato":
-		exito = encimera_cercana.colocar_plato(
-			global_position,
-			hand_sprite.texture,
-			ingrediente_actual["ingredientes"]
-		)
+	
+	# Si es un diccionario y contiene un plato, lo colocamos
+	elif typeof(ingrediente_actual) == TYPE_DICTIONARY and ingrediente_actual.has("tipo"):
+		if ingrediente_actual["tipo"] == "plato":
+			exito = encimera_cercana.colocar_plato(
+				global_position,
+				hand_sprite.texture,
+				ingrediente_actual["ingredientes"]
+			)
+		else:
+			# Si es un ingrediente (no plato), colocamos el ingrediente
+			exito = encimera_cercana.colocar_objeto(
+				ingrediente_actual["tipo"],  # El tipo es el nombre del ingrediente
+				global_position,
+				hand_sprite.texture
+			)
 	
 	if exito:
 		limpiar_manos()
+		print("Ingrediente colocado en la mesa.")
+
+
 
 func limpiar_manos():
 	ingrediente_actual = null
