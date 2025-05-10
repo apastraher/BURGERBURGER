@@ -205,7 +205,9 @@ shape = SubResource("RectangleShape2D_qkrfw")
 
 [node name="AldeanoSound" type="AudioStreamPlayer2D" parent="Character"]
 stream = ExtResource("7_j8hyr")
+bus = &"SFX"
 
 [node name="AldeanoEnfadadoSound" type="AudioStreamPlayer2D" parent="Character"]
 stream = ExtResource("8_fj2j1")
 volume_db = -5.073
+bus = &"SFX"

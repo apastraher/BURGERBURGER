@@ -37,12 +37,13 @@ func interactuar_con_jugador(jugador: Node2D):
 	
 	match estado:
 		Estado.VACIA:
-			if jugador.ingrediente_actual == "carne_cruda":
+			# Verificación simple y directa
+			if typeof(jugador.ingrediente_actual) == TYPE_STRING and jugador.ingrediente_actual == "carne_cruda":
 				_empezar_coccion(jugador)
 		Estado.COCINADA:
-			_dar_ingrediente(jugador)  # Cambiado el nombre aquí
+			_dar_ingrediente(jugador)
 		Estado.QUEMADA:
-			_dar_ingrediente(jugador)  # Cambiado el nombre aquí
+			_dar_ingrediente(jugador)
 
 func _empezar_coccion(jugador: Node2D):
 	estado = Estado.COCINANDO

@@ -1,26 +1,41 @@
 extends Area2D
 class_name CajaIngrediente
 
-@export var ingrediente: String
+@export var ingrediente: String = "":  # Asigna valor por defecto
+	set(value):
+		ingrediente = value
+		# Actualiza la textura si el nodo está listo
+		if is_inside_tree():
+			cargar_textura_ingrediente()
+
 @onready var sprite_ingrediente: Sprite2D = $Ingrediente
 
 func _ready():
 	cargar_textura_ingrediente()
 
 func cargar_textura_ingrediente():
-	var path = "res://assets/ingredientes/%s.png" % ingrediente
-	if ResourceLoader.exists(path):
-		sprite_ingrediente.texture = load(path)
-		# Ajustar escala si es necesario (opcional)
-		sprite_ingrediente.scale = Vector2(0.5, 0.5)  
-	else:
-		push_warning("No se encontró textura para: ", path)
+	if ingrediente.is_empty():
+		sprite_ingrediente.visible = false
+		return
+
+	var paths_to_try = [
+		"res://assets/ingredientes/%s.png" % ingrediente,
+		"res://assets/ingredientes/%s.tres" % ingrediente, 
+		"res://assets/ingredientes/%s.tex" % ingrediente
+	]
+	
+	var texture_loaded = false
+	for path in paths_to_try:
+		if ResourceLoader.exists(path):
+			sprite_ingrediente.texture = load(path)
+			sprite_ingrediente.scale = Vector2(0.25, 0.25)
+			sprite_ingrediente.visible = true
+			texture_loaded = true
+			break
+	
+	if not texture_loaded:
+		push_warning("No se encontró textura para el ingrediente: ", ingrediente)
 		sprite_ingrediente.visible = false
 
 func recoger_ingrediente() -> String:
-	# Pequeña animación al recoger (opcional)
-	var tween = create_tween()
-	tween.tween_property(sprite_ingrediente, "scale", Vector2(0.6, 0.6), 0.1)
-	tween.tween_property(sprite_ingrediente, "scale", Vector2(0.5, 0.5), 0.1)
-	
 	return ingrediente

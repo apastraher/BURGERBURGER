@@ -13,9 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://bu0a4jlr28v05" path="res://scenes/encimera.tscn" id="11_1onba"]
 [ext_resource type="PackedScene" uid="uid://dg43pi3fpue0g" path="res://scenes/timer.tscn" id="12_6cew8"]
 [ext_resource type="PackedScene" uid="uid://n7lb7101enjf" path="res://scenes/cocina.tscn" id="13_lxcw7"]
-[ext_resource type="PackedScene" uid="uid://tpgd1oxg5sg5" path="res://papelera.tscn" id="14_ngwq2"]
+[ext_resource type="PackedScene" uid="uid://tpgd1oxg5sg5" path="res://scenes/papelera.tscn" id="14_ngwq2"]
 [ext_resource type="PackedScene" uid="uid://c7cu56adu8gfc" path="res://scenes/cliente.tscn" id="15_o3v11"]
-[ext_resource type="PackedScene" uid="uid://bwio7l8l0n7h" path="res://dinero.tscn" id="16_m650i"]
+[ext_resource type="PackedScene" uid="uid://bwio7l8l0n7h" path="res://scenes/dinero.tscn" id="16_m650i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwwo2"]
 texture = ExtResource("3_de7ht")
@@ -1697,6 +1697,21 @@ position = Vector2(324, 130)
 scale = Vector2(1.5, 1.5)
 ingrediente = "queso"
 
+[node name="lechuga" parent="TileMapContainer" groups=["cajas"] instance=ExtResource("9_kev7v")]
+position = Vector2(373, 204)
+scale = Vector2(1.5, 1.5)
+ingrediente = "lechuga"
+
+[node name="tomate" parent="TileMapContainer" groups=["cajas"] instance=ExtResource("9_kev7v")]
+z_index = 2
+position = Vector2(340, 204)
+scale = Vector2(1.5, 1.5)
+ingrediente = "tomate"
+
+[node name="papelera" parent="TileMapContainer" instance=ExtResource("14_ngwq2")]
+z_index = 1
+position = Vector2(405, 206)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(85, -1)
 collision_layer = 64
@@ -1742,13 +1757,11 @@ z_index = 5
 position = Vector2(285, 194)
 
 [node name="TimerNode" parent="." instance=ExtResource("12_6cew8")]
+z_index = 2
+scale = Vector2(1.5, 1.5)
 
 [node name="Cocina" parent="." groups=["sartenes"] instance=ExtResource("13_lxcw7")]
 position = Vector2(283, 130)
-
-[node name="papelera" parent="." instance=ExtResource("14_ngwq2")]
-z_index = 1
-position = Vector2(405, 208)
 
 [node name="Cliente" parent="." node_paths=PackedStringArray("punto_entrada", "punto_salida") groups=["clientes"] instance=ExtResource("15_o3v11")]
 z_index = 3

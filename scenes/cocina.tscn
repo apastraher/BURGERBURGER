@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://n7lb7101enjf"]
 
 [ext_resource type="Texture2D" uid="uid://l4y7lpn43cy7" path="res://assets/Tilesets/Objects/tableSarten.png" id="1_bhmfm"]
-[ext_resource type="Script" path="res://sarten.gd" id="2_ugjkn"]
+[ext_resource type="Script" path="res://scenes/sarten.gd" id="2_ugjkn"]
 [ext_resource type="Texture2D" uid="uid://cluunxlovbxvw" path="res://assets/Tilesets/Objects/SartenIdle.png" id="3_gn0y1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1x3y4"]

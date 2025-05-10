@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://bikd11bsx3er0"]
+
+[ext_resource type="Texture2D" uid="uid://b6enrrnknrcgj" path="res://assets/Tilesets/Objects/atras.png" id="1_o3spd"]
+[ext_resource type="Script" path="res://scenes/opciones_controles.gd" id="1_spf62"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="3_nsswt"]
+
+[node name="OpcionesControles" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.003
+offset_right = -1.0
+offset_bottom = -0.0800171
+script = ExtResource("1_spf62")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.002
+anchor_bottom = 1.0
+offset_right = -0.280029
+offset_bottom = 2.0
+
+[node name="AtrasControles" type="Button" parent="CanvasLayer/Panel"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036
+anchor_top = 0.052
+anchor_right = 0.092
+anchor_bottom = 0.144
+offset_left = -0.0760021
+offset_top = 0.175999
+offset_right = 0.0279961
+offset_bottom = -0.128002
+icon = ExtResource("1_o3spd")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+custom_minimum_size = Vector2(443, 265)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.154
+anchor_top = 0.132
+anchor_right = 0.846
+anchor_bottom = 0.868
+offset_left = -0.214012
+offset_top = -0.284
+offset_right = -0.0939941
+offset_bottom = -0.244019
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nsswt")
+theme_override_font_sizes/font_size = 25
+text = "Ajustes de controles"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Anterior" type="Button" parent="CanvasLayer/Panel/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nsswt")
+theme_override_font_sizes/font_size = 35
+text = "⬅"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Posterior" type="Button" parent="CanvasLayer/Panel/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nsswt")
+theme_override_font_sizes/font_size = 35
+text = "⮕"
+
+[node name="LabelDescripcion" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/Panel/AtrasControles" to="." method="_on_atras_controles_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/CenterContainer/HBoxContainer/Anterior" to="." method="_on_anterior_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/CenterContainer/HBoxContainer/Posterior" to="." method="_on_posterior_pressed"]

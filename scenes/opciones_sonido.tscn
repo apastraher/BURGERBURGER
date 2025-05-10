@@ -1,0 +1,132 @@
+[gd_scene load_steps=4 format=3 uid="uid://ditgmekpyfscw"]
+
+[ext_resource type="Script" path="res://scenes/opciones_sonido.gd" id="1_gpntw"]
+[ext_resource type="Texture2D" uid="uid://b6enrrnknrcgj" path="res://assets/Tilesets/Objects/atras.png" id="2_3qtba"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="3_2styi"]
+
+[node name="OpcionesSonido" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gpntw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.006
+anchor_bottom = 1.011
+offset_right = 0.159973
+offset_bottom = 0.039978
+
+[node name="AtrasSonido" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036
+anchor_top = 0.052
+anchor_right = 0.092
+anchor_bottom = 0.143
+offset_left = -0.184002
+offset_top = 0.0720005
+offset_right = -0.248005
+offset_bottom = -0.052002
+icon = ExtResource("2_3qtba")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.154
+anchor_top = 0.132
+anchor_right = 0.846
+anchor_bottom = 0.868
+offset_left = 0.440002
+offset_top = 0.48
+offset_right = 0.791931
+offset_bottom = 0.575958
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="AjSonido" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2styi")
+theme_override_font_sizes/font_size = 30
+text = "Ajustes de sonido"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 21
+
+[node name="VolGeneral" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2styi")
+theme_override_font_sizes/font_size = 25
+text = "Volumen general"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SliderMaestro" type="HSlider" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="MasterValue" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_right = 107
+
+[node name="Musica" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2styi")
+theme_override_font_sizes/font_size = 25
+text = "Música"
+
+[node name="SliderMusica" type="HSlider" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="MusicValue" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/margin_right = 98
+
+[node name="Efectos" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2styi")
+theme_override_font_sizes/font_size = 25
+text = "Efectos"
+
+[node name="SliderSFX" type="HSlider" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="SFXValue" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/Panel/AtrasSonido" to="." method="_on_atras_sonido_pressed"]

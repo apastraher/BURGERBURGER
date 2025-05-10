@@ -1,13 +1,13 @@
 [gd_scene load_steps=22 format=4 uid="uid://c5jcf2daan383"]
 
-[ext_resource type="PackedScene" uid="uid://ddbyb28yh3aw7" path="res://scenes/character.tscn" id="1_qyv7t"]
-[ext_resource type="Texture2D" uid="uid://bv0qumujv73c3" path="res://assets/Tilesets/Objects/roguelikeIndoor_transparent.png" id="2_c7lvp"]
-[ext_resource type="Texture2D" uid="uid://dr4n0jm77ri2a" path="res://assets/Tilesets/Flat/Wooden_House_Roof_Tilset.png" id="3_t882o"]
-[ext_resource type="Texture2D" uid="uid://dnjc1iu23tpij" path="res://assets/Tilesets/Flat/Wooden_House_Walls_Tilset.png" id="4_h0jsn"]
-[ext_resource type="Texture2D" uid="uid://d0mcr7ews3mpl" path="res://assets/Tilesets/Flat/Tileset_Interior Wood_Gnomenlied.png" id="5_6oumh"]
+[ext_resource type="PackedScene" uid="uid://ddbyb28yh3aw7" path="res://scenes/character.tscn" id="1_ycsrf"]
+[ext_resource type="Texture2D" uid="uid://bv0qumujv73c3" path="res://assets/Tilesets/Objects/roguelikeIndoor_transparent.png" id="2_otcep"]
+[ext_resource type="Texture2D" uid="uid://dr4n0jm77ri2a" path="res://assets/Tilesets/Flat/Wooden_House_Roof_Tilset.png" id="3_cy074"]
+[ext_resource type="Texture2D" uid="uid://dnjc1iu23tpij" path="res://assets/Tilesets/Flat/Wooden_House_Walls_Tilset.png" id="4_upe8p"]
+[ext_resource type="Texture2D" uid="uid://d0mcr7ews3mpl" path="res://assets/Tilesets/Flat/Tileset_Interior Wood_Gnomenlied.png" id="5_grrxd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b5oo8"]
-texture = ExtResource("2_c7lvp")
+texture = ExtResource("2_otcep")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -535,7 +535,7 @@ texture = ExtResource("2_c7lvp")
 27:18/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lp4tp"]
-texture = ExtResource("3_t882o")
+texture = ExtResource("3_cy074")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -571,7 +571,7 @@ texture = ExtResource("3_t882o")
 6:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2618"]
-texture = ExtResource("4_h0jsn")
+texture = ExtResource("4_upe8p")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -588,7 +588,7 @@ texture = ExtResource("4_h0jsn")
 3:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uakr0"]
-texture = ExtResource("5_6oumh")
+texture = ExtResource("5_grrxd")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1369,7 +1369,7 @@ sources/2 = SubResource("TileSetAtlasSource_r2618")
 sources/3 = SubResource("TileSetAtlasSource_uakr0")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_osclk"]
-texture = ExtResource("4_h0jsn")
+texture = ExtResource("4_upe8p")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1386,7 +1386,7 @@ texture = ExtResource("4_h0jsn")
 3:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnydf"]
-texture = ExtResource("3_t882o")
+texture = ExtResource("3_cy074")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1426,7 +1426,7 @@ sources/0 = SubResource("TileSetAtlasSource_osclk")
 sources/1 = SubResource("TileSetAtlasSource_dnydf")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_284qw"]
-texture = ExtResource("2_c7lvp")
+texture = ExtResource("2_otcep")
 texture_region_size = Vector2i(17, 17)
 0:0/0 = 0
 1:0/0 = 0
@@ -1977,7 +1977,7 @@ size = Vector2(12, 81)
 
 [node name="MapContainer" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_qyv7t")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ycsrf")]
 z_index = 2
 position = Vector2(258, 150)
 

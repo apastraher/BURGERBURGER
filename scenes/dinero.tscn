@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwio7l8l0n7h"]
 
-[ext_resource type="Script" path="res://dinero.gd" id="1_enfmr"]
+[ext_resource type="Script" path="res://scenes/dinero.gd" id="1_enfmr"]
 [ext_resource type="Texture2D" uid="uid://bleojmfg2jfuq" path="res://assets/Tilesets/Objects/dinero.png" id="2_hinsh"]
 
 [node name="Dinero" type="Node2D"]

@@ -29,7 +29,9 @@ var moviendose: bool = false
 var ingredientes_texturas = {
 	"pan": preload("res://assets/ingredientes/pan.png"),
 	"carne_cocinada": preload("res://assets/ingredientes/carne_cocinada.png"),
-	"queso": preload("res://assets/ingredientes/queso.png")
+	"queso": preload("res://assets/ingredientes/queso.png"),
+	"tomate": preload("res://assets/ingredientes/tomate.png"),
+	"lechuga": preload("res://assets/ingredientes/lechuga.png")
 }
 
 signal cliente_satisfecho
@@ -132,8 +134,8 @@ func empezar_pedido():
 	timer_paciencia.start()
 
 func generar_pedido():
-	var ingredientes = ["carne_cocinada", "queso"]
-	var num_ingredientes = randi_range(1, 2)
+	var ingredientes = ["carne_cocinada", "queso", "tomate", "lechuga"]
+	var num_ingredientes = randi_range(1, 4)
 	var seleccionados = []
 	var ingredientes_disponibles = ingredientes.duplicate()
 
