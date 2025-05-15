@@ -1758,6 +1758,7 @@ position = Vector2(285, 194)
 
 [node name="TimerNode" parent="." instance=ExtResource("12_6cew8")]
 z_index = 2
+position = Vector2(9, 6)
 scale = Vector2(1.5, 1.5)
 
 [node name="Cocina" parent="." groups=["sartenes"] instance=ExtResource("13_lxcw7")]
@@ -1770,9 +1771,12 @@ punto_entrada = NodePath("../PuntoEntrada")
 punto_salida = NodePath("../PuntoSalida")
 
 [node name="Dinero" parent="." instance=ExtResource("16_m650i")]
+position = Vector2(583, 9)
 
 [node name="PuntoEntrada" type="Marker2D" parent="."]
 position = Vector2(440, 0)
 
 [node name="PuntoSalida" type="Marker2D" parent="."]
 position = Vector2(440, 360)
+
+[connection signal="tiempo_finalizado" from="TimerNode" to="." method="_on_timer_node_tiempo_finalizado"]

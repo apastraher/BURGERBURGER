@@ -16,6 +16,7 @@ func _ready():
 		var marker = get_node_or_null("PosicionColocacion" + str(i))
 		if marker:
 			posiciones.append(marker.global_position)
+	z_index = int(global_position.y)
 
 func colocar_objeto(nombre_ingrediente: String, player_pos: Vector2, textura_ingrediente: Texture2D) -> bool:
 	var pos_idx = _encontrar_posicion_mas_cercana(player_pos)

@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://das217cjk4pqk" path="res://assets/ButtonStyleNormal.tres" id="3_uromm"]
 
 [node name="Control" type="Control"]
+z_index = 101
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,6 +49,8 @@ theme_override_constants/separation = 30
 [node name="Jugar" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_l6p16")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = ExtResource("2_1n87f")
 theme_override_styles/hover = ExtResource("2_1n87f")
 theme_override_styles/normal = ExtResource("3_uromm")
@@ -55,6 +58,8 @@ text = "Jugar"
 
 [node name="Opciones" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l6p16")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = ExtResource("2_1n87f")
 theme_override_styles/hover = ExtResource("2_1n87f")
 theme_override_styles/normal = ExtResource("3_uromm")
@@ -62,6 +67,8 @@ text = "Opciones"
 
 [node name="Salir" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l6p16")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = ExtResource("2_1n87f")
 theme_override_styles/hover = ExtResource("2_1n87f")
 theme_override_styles/normal = ExtResource("3_uromm")

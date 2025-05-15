@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg43pi3fpue0g"]
+[gd_scene load_steps=4 format=3 uid="uid://dg43pi3fpue0g"]
 
 [ext_resource type="Script" path="res://scenes/timer.gd" id="1_tettv"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="2_0c8ff"]
+[ext_resource type="AudioStream" uid="uid://c54i3ljwv0yfi" path="res://assets/audio/sfx/end_ring.wav" id="2_ltvaq"]
 
 [node name="TimerNode" type="Node2D"]
 script = ExtResource("1_tettv")
@@ -8,7 +10,13 @@ script = ExtResource("1_tettv")
 [node name="Label" type="Label" parent="."]
 offset_right = 51.0
 offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("2_0c8ff")
+theme_override_font_sizes/font_size = 25
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="SonidoFinal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ltvaq")
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

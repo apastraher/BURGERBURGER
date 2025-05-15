@@ -20,6 +20,7 @@ func _ready():
 	area_interaccion.body_exited.connect(_on_body_exited)
 	timer.timeout.connect(_on_timer_timeout)
 	add_to_group("sartenes")
+	z_index = int(global_position.y)
 
 var jugador_cercano: Node2D = null
 

@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://ts5neplx4gtg"]
+
+[ext_resource type="Texture2D" uid="uid://dgvaxw7ypmkgn" path="res://assets/scenes/final_good-sheet.png" id="1_71r05"]
+[ext_resource type="Script" path="res://scenes/final_bueno.gd" id="1_qjvno"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="2_ecv5h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7n64"]
+atlas = ExtResource("1_71r05")
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05w44"]
+atlas = ExtResource("1_71r05")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xnaf"]
+atlas = ExtResource("1_71r05")
+region = Rect2(1280, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfawt"]
+atlas = ExtResource("1_71r05")
+region = Rect2(1920, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axiyk"]
+atlas = ExtResource("1_71r05")
+region = Rect2(2560, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgmoe"]
+atlas = ExtResource("1_71r05")
+region = Rect2(3200, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04cn8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7n64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05w44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xnaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfawt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axiyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgmoe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_qjvno")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 180)
+sprite_frames = SubResource("SpriteFrames_04cn8")
+frame_progress = 0.271473
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.321
+offset_left = 157.0
+offset_top = 30.0
+offset_right = -153.0
+offset_bottom = -9.56001
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ecv5h")
+theme_override_font_sizes/font_size = 70
+text = "FELICIDADES"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 118.0
+offset_top = 304.0
+offset_right = 495.0
+offset_bottom = 339.0
+scale = Vector2(1.06678, 0.94776)
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Salir" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ecv5h")
+theme_override_font_sizes/font_size = 25
+text = "SALIR"
+
+[connection signal="pressed" from="HBoxContainer/Salir" to="." method="_on_salir_pressed"]

@@ -8,6 +8,14 @@ extends Node2D
 
 @onready var label_timer: Label = $Label
 @onready var timer: Timer = $Timer
+@onready var ring_sound: AudioStreamPlayer2D = $SonidoFinal
+
+signal tiempo_finalizado
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("f2"):  # Configura "f2" en Input Map
+		real_time_remaining = 0  # Fuerza el final
+		_on_timer_timeout()      # Dispara el evento manualmente
 
 func _ready() -> void:
 	# Inicialización segura
@@ -41,4 +49,5 @@ func _on_timer_timeout() -> void:
 	if real_time_remaining <= 0:
 		timer.stop()
 		update_display(simulated_end)
-		print("Tiempo finalizado")
+		ring_sound.play()
+		emit_signal("tiempo_finalizado")

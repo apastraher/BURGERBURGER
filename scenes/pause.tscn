@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://j546yj4xilil"]
+[gd_scene load_steps=3 format=3 uid="uid://j546yj4xilil"]
 
 [ext_resource type="Script" path="res://scenes/pause.gd" id="1_4tjyg"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="2_13p3h"]
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -36,5 +37,7 @@ size_flags_horizontal = 4
 [node name="Salir" type="Button" parent="CenterContainer"]
 visible = false
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_13p3h")
+theme_override_font_sizes/font_size = 25
 text = "Salir
 "

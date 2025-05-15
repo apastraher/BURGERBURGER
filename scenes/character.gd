@@ -27,6 +27,7 @@ func _physics_process(delta):
 		manejar_interaccion()
 	
 	move_and_slide()
+	z_index = int(global_position.y) + 10
 
 func manejar_movimiento():
 	var direccion = Input.get_vector("left", "right", "up", "down")

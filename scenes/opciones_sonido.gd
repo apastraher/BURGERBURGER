@@ -8,23 +8,29 @@ extends Control
 @onready var sfx_value = $CanvasLayer/VBoxContainer/HBoxContainer3/SFXValue
 
 func _ready():
-	# Cargar la configuración de volúmenes desde los ajustes guardados
-	master_slider.value = Settings.load_volume("master")
-	music_slider.value = Settings.load_volume("music")
-	sfx_slider.value = Settings.load_volume("sfx")
-
-	# Actualizar las etiquetas con los valores cargados
+	# Cargar valores
+	master_slider.value = Settings.load_volume("Master")
+	music_slider.value = Settings.load_volume("Music")
+	sfx_slider.value = Settings.load_volume("SFX")
+	
+	# Aplicar los volúmenes inmediatamente
+	apply_volume("Master", master_slider.value)
+	apply_volume("Music", music_slider.value)
+	apply_volume("SFX", sfx_slider.value)
+	
 	update_volume_labels()
-
-	# Conectar señales para cuando el valor del slider cambie
+	
+	# Conectar señales
 	master_slider.value_changed.connect(_on_master_slider_value_changed)
 	music_slider.value_changed.connect(_on_music_slider_value_changed)
 	sfx_slider.value_changed.connect(_on_sfx_slider_value_changed)
-
-	# Configurar el foco en el slider maestro
+	
 	master_slider.grab_focus()
 
-
+func apply_volume(bus_name: String, value: float):
+	var db_volume = linear_to_db(value / 100.0)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name), db_volume)
+	Settings.save_volume(bus_name, value)
 
 func update_volume_labels():
 	master_value.text = "%d%%" % master_slider.value
@@ -32,30 +38,17 @@ func update_volume_labels():
 	sfx_value.text = "%d%%" % sfx_slider.value
 
 func _on_master_slider_value_changed(value: float):
-	# Convertir de 0-100 a dB (rango útil: -30dB a 0dB)
-	var db_volume = linear_to_db(value / 100.0)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), db_volume)
+	apply_volume("Master", value)
 	master_value.text = "%d%%" % value
-	Settings.save_volume("master", value / 100.0)  # Guardar como 0-1
 
 func _on_music_slider_value_changed(value: float):
-	var db_volume = linear_to_db(value / 100.0)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), db_volume)
+	apply_volume("Music", value)
 	music_value.text = "%d%%" % value
-	Settings.save_volume("music", value / 100.0)
 
 func _on_sfx_slider_value_changed(value: float):
-	var db_volume = linear_to_db(value / 100.0)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), db_volume)
+	apply_volume("SFX", value)
 	sfx_value.text = "%d%%" % value
-	Settings.save_volume("sfx", value / 100.0)
-
 
 func _on_atras_sonido_pressed() -> void:
-	# Guardar los valores actuales de los sliders
-	Settings.save_volume("master", master_slider.value)
-	Settings.save_volume("music", music_slider.value)
-	Settings.save_volume("sfx", sfx_slider.value)
-
-	# Cambiar de escena (por ejemplo, a la escena principal o de opciones)
+	# No necesitamos guardar aquí porque ya se guarda en cada cambio
 	get_tree().change_scene_to_file("res://scenes/opciones.tscn")

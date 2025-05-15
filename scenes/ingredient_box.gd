@@ -12,6 +12,7 @@ class_name CajaIngrediente
 
 func _ready():
 	cargar_textura_ingrediente()
+	z_index = int(global_position.y)
 
 func cargar_textura_ingrediente():
 	if ingrediente.is_empty():

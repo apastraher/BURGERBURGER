@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwio7l8l0n7h"]
+[gd_scene load_steps=4 format=3 uid="uid://bwio7l8l0n7h"]
 
 [ext_resource type="Script" path="res://scenes/dinero.gd" id="1_enfmr"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="2_buqcr"]
 [ext_resource type="Texture2D" uid="uid://bleojmfg2jfuq" path="res://assets/Tilesets/Objects/dinero.png" id="2_hinsh"]
 
 [node name="Dinero" type="Node2D"]
@@ -11,9 +12,11 @@ metadata/_edit_group_ = true
 [node name="MoneyLabel" type="Label" parent="."]
 offset_right = 36.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_buqcr")
+theme_override_font_sizes/font_size = 25
 text = "$"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-18.5, 10.5)
+position = Vector2(-18.5, 13.5)
 scale = Vector2(1.4375, 1.4375)
 texture = ExtResource("2_hinsh")
