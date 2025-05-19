@@ -3,58 +3,65 @@ extends Node2D
 @export var umbral_dinero: int = 0
 @onready var timer_node = $TimerNode
 @onready var nodo_dinero = $Dinero
+@onready var tutorial_scene = preload("res://scenes/tutorial.tscn")
+
+var tutorial_instance: Control = null
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
-	
-	if not timer_node:
-		push_error("TimerNode no encontrado en la escena")
-		return
+	# Cargar configuración temporal
+	var config = ConfigFile.new()
+	if config.load("user://config.cfg") == OK:
+		var run_tutorial = config.get_value("temp", "run_tutorial", false)
+		config.erase_section("temp")  # Limpiar valor temporal
+		config.save("user://config.cfg")
 		
-	if not nodo_dinero:
-		push_error("Nodo Dinero no encontrado en la escena")
-		return
-		
-	if timer_node.has_signal("tiempo_finalizado"):
-		timer_node.tiempo_finalizado.connect(_on_timer_finalizado)
+		if run_tutorial:
+			_iniciar_tutorial()
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	else:
-		push_error("La señal 'tiempo_finalizado' no existe en TimerNode")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	
+	# Configurar timer de juego
+	if timer_node:
+		timer_node.tiempo_finalizado.connect(_on_timer_finalizado)
+
+func _iniciar_tutorial():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	tutorial_instance = tutorial_scene.instantiate()
+	add_child(tutorial_instance)
+	tutorial_instance.process_mode = Node.PROCESS_MODE_ALWAYS
+	tutorial_instance.tutorial_terminado.connect(_on_tutorial_terminado)
+	get_tree().paused = true
+
+func _on_tutorial_terminado():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	get_tree().paused = false
+	
+	# Marcar tutorial como completado
+	var config = ConfigFile.new()
+	config.load("user://config.cfg")
+	config.set_value("tutorial", "completed", true)
+	config.save("user://config.cfg")
+	
+	if tutorial_instance:
+		tutorial_instance.queue_free()
+		tutorial_instance = null
 
 func _on_timer_finalizado() -> void:
 	get_tree().paused = false
 	
-	# Obtener el nodo Fade (asegúrate de que esté en autoload)
+	# Manejar transición de escena
 	var fade = get_node("/root/Fade")
-	if not fade:
-		push_error("Nodo Fade no encontrado")
+	if fade:
+		fade.fade_completed.connect(_cambiar_escena, CONNECT_ONE_SHOT)
+		fade.fade_in(1.0)
+	else:
 		_cambiar_escena()
-		return
-	
-	# Conectar la señal solo para esta ocasión
-	fade.fade_completed.connect(_cambiar_escena, CONNECT_ONE_SHOT)
-	
-	# Deshabilitar inputs
-	_toggle_pause_menu_input(false)
-	
-	# Ejecutar fade in (la escena cambiará cuando se complete)
-	fade.fade_in(1.0)
-
-func _toggle_pause_menu_input(enable: bool) -> void:
-	var pause_menu = get_tree().root.get_node_or_null("PauseMenu")
-	if pause_menu:
-		pause_menu.set_process_unhandled_input(enable)
 
 func _cambiar_escena() -> void:
-	var money_label = nodo_dinero.get_node("MoneyLabel") as Label
-	if not money_label:
-		push_error("MoneyLabel no encontrado")
-		return
-	
-	var dinero_actual = int(money_label.text)
+	var dinero_actual = int(nodo_dinero.get_node("MoneyLabel").text)
 	var escena_path = "res://scenes/final_bueno.tscn" if dinero_actual >= umbral_dinero else "res://scenes/final_malo.tscn"
 	
 	if ResourceLoader.exists(escena_path):
 		get_tree().change_scene_to_file(escena_path)
-	else:
-		push_error("Escena no encontrada: " + escena_path)
-		get_tree().quit()

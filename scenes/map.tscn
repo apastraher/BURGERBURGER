@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bk6xmp3xpml85"]
+[gd_scene load_steps=33 format=4 uid="uid://bk6xmp3xpml85"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_4sax8"]
 [ext_resource type="PackedScene" uid="uid://ddbyb28yh3aw7" path="res://scenes/character.tscn" id="1_xhgff"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://tpgd1oxg5sg5" path="res://scenes/papelera.tscn" id="14_ngwq2"]
 [ext_resource type="PackedScene" uid="uid://c7cu56adu8gfc" path="res://scenes/cliente.tscn" id="15_o3v11"]
 [ext_resource type="PackedScene" uid="uid://bwio7l8l0n7h" path="res://scenes/dinero.tscn" id="16_m650i"]
+[ext_resource type="PackedScene" uid="uid://r30k0ytab6tk" path="res://scenes/tutorial.tscn" id="17_vtyk1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwwo2"]
 texture = ExtResource("3_de7ht")
@@ -1654,7 +1655,7 @@ size = Vector2(5, 96)
 script = ExtResource("1_4sax8")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_xhgff")]
-z_index = 100
+z_index = 20
 position = Vector2(335, 166)
 
 [node name="TileMapContainer" type="Node" parent="."]
@@ -1757,7 +1758,7 @@ z_index = 5
 position = Vector2(285, 194)
 
 [node name="TimerNode" parent="." instance=ExtResource("12_6cew8")]
-z_index = 2
+z_index = 1
 position = Vector2(9, 6)
 scale = Vector2(1.5, 1.5)
 
@@ -1778,5 +1779,9 @@ position = Vector2(440, 0)
 
 [node name="PuntoSalida" type="Marker2D" parent="."]
 position = Vector2(440, 360)
+
+[node name="Tutorial" parent="." instance=ExtResource("17_vtyk1")]
+visible = false
+z_index = 100
 
 [connection signal="tiempo_finalizado" from="TimerNode" to="." method="_on_timer_node_tiempo_finalizado"]

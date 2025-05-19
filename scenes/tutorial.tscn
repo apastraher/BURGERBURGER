@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://r30k0ytab6tk"]
+
+[ext_resource type="Script" path="res://scenes/tutorial.gd" id="1_3an0n"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="2_poh4n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xejp"]
+bg_color = Color(0.894118, 0.894118, 0.894118, 0.54902)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3an0n")
+
+[node name="Fondo" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(16.0246, 8.97392)
+color = Color(0, 0, 0, 0.584314)
+
+[node name="PanelResaltado" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -48.0
+offset_right = 46.0
+offset_bottom = -8.0
+color = Color(0.447059, 0.447059, 0.447059, 0.560784)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 227.0
+offset_right = 231.0
+offset_bottom = 331.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xejp")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 196.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_poh4n")
+theme_override_font_sizes/font_size = 15

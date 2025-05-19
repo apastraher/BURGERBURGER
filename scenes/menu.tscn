@@ -86,3 +86,11 @@ theme_override_font_sizes/font_size = 30
 text = "VIDEOGAME 
 NAME"
 vertical_alignment = 1
+
+[node name="TutorialDialog" type="ConfirmationDialog" parent="."]
+title = ""
+initial_position = 1
+size = Vector2i(219, 100)
+ok_button_text = "Si"
+dialog_text = "¿Quieres hacer el tutorial?"
+cancel_button_text = "No"

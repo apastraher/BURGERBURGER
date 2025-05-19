@@ -1,6 +1,5 @@
 extends Control
 
-# Precarga de texturas de cursor (usa constantes para mejor legibilidad)
 const CURSOR_NORMAL := preload("res://assets/Tilesets/Mouse/normal_mouse.png")
 const CURSOR_HOVER := preload("res://assets/Tilesets/Mouse/hover_mouse.png")
 const CURSOR_CLICK := preload("res://assets/Tilesets/Mouse/click_mouse.png")
@@ -8,27 +7,75 @@ const CURSOR_CLICK := preload("res://assets/Tilesets/Mouse/click_mouse.png")
 @onready var jugar_button: Button = $CenterContainer/VBoxContainer/Jugar
 @onready var opciones_button: Button = $CenterContainer/VBoxContainer/Opciones
 @onready var salir_button: Button = $CenterContainer/VBoxContainer/Salir
+@onready var tutorial_dialog: ConfirmationDialog = $TutorialDialog
+
+var tutorial_accepted = false
+var config_path = "user://config.cfg"
 
 func _ready():
-	# Configuración inicial del mouse
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
 	
-	# Conexión de señales de botones
+	# Configurar botones
 	jugar_button.pressed.connect(_on_jugar_pressed)
 	opciones_button.pressed.connect(_on_opciones_pressed)
 	salir_button.pressed.connect(_on_salir_pressed)
 	
-	# Conexión de señales de hover (mejor que conectar a todo el Control)
+	# Configurar efectos de hover
 	for button in [jugar_button, opciones_button, salir_button]:
 		button.mouse_entered.connect(_on_button_hovered.bind(button))
 		button.mouse_exited.connect(_on_button_unhovered.bind(button))
 		button.button_down.connect(_on_button_pressed.bind(button))
 		button.button_up.connect(_on_button_released.bind(button))
+	
+	# Conectar señales del diálogo
+	tutorial_dialog.confirmed.connect(_on_tutorial_accepted)
+	tutorial_dialog.canceled.connect(_on_tutorial_rejected)
 
+func _on_jugar_pressed():
+	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
+	
+	# Verificar si ya completó el tutorial
+	var config = ConfigFile.new()
+	var has_done_tutorial = config.load(config_path) == OK && config.get_value("tutorial", "completed", false)
+	
+	if has_done_tutorial:
+		tutorial_dialog.dialog_text = "¿Quieres repetir el tutorial?"
+	else:
+		tutorial_dialog.dialog_text = "¿Quieres hacer el tutorial?"
+	
+	tutorial_dialog.popup_centered()
+
+func _on_tutorial_accepted():
+	tutorial_accepted = true
+	# Guardar selección temporalmente
+	var config = ConfigFile.new()
+	config.load(config_path)
+	config.set_value("temp", "run_tutorial", true)
+	config.save(config_path)
+	
+	get_tree().change_scene_to_file("res://scenes/map.tscn")
+
+func _on_tutorial_rejected():
+	tutorial_accepted = false
+	# Guardar selección temporalmente
+	var config = ConfigFile.new()
+	config.load(config_path)
+	config.set_value("temp", "run_tutorial", false)
+	config.save(config_path)
+	
+	get_tree().change_scene_to_file("res://scenes/map.tscn")
+
+func _on_opciones_pressed():
+	get_tree().change_scene_to_file("res://scenes/opciones.tscn")
+
+func _on_salir_pressed():
+	get_tree().quit()
+
+# Funciones para efectos visuales del mouse
 func _on_button_hovered(button: Button):
 	Input.set_custom_mouse_cursor(CURSOR_HOVER)
-	button.scale = Vector2(1.05, 1.05)  # Efecto visual adicional
+	button.scale = Vector2(1.05, 1.05)
 
 func _on_button_unhovered(button: Button):
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
@@ -36,20 +83,8 @@ func _on_button_unhovered(button: Button):
 
 func _on_button_pressed(button: Button):
 	Input.set_custom_mouse_cursor(CURSOR_CLICK)
-	button.scale = Vector2(0.95, 0.95)  # Efecto de pulsación
+	button.scale = Vector2(0.95, 0.95)
 
 func _on_button_released(button: Button):
 	Input.set_custom_mouse_cursor(CURSOR_HOVER)
 	button.scale = Vector2(1.05, 1.05)
-
-func _on_jugar_pressed():
-	# Transición suave antes de cambiar de escena
-	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
-	get_tree().change_scene_to_file("res://scenes/map.tscn")
-
-func _on_opciones_pressed():
-	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
-	get_tree().change_scene_to_file("res://scenes/opciones.tscn")
-
-func _on_salir_pressed():
-	get_tree().quit()
