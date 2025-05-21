@@ -5,6 +5,8 @@ extends Control
 @onready var panel_texto: Panel = $Panel
 @onready var texto_explicacion: Label = $Panel/Label
 
+signal tutorial_terminado
+
 var pasos = [
 	{"texto": "Bienvenido al tutorial. Aquí aprenderás lo básico.\n\n(Haz clic para continuar)", "pos": Vector2(0, 0), "size": Vector2(0, 0)},
 	{"texto": "La jornada empieza a las 12:00 y acaba a las 16:00.\n\n(Haz clic para continuar)", "pos": Vector2(9, 6), "size": Vector2(300, 150)},
@@ -19,13 +21,11 @@ var pasos = [
 	{"texto": "Espero que vaya todo bien, ¡suerte!\n\n(Haz clic para terminar)", "pos": Vector2(0, 0), "size": Vector2(0, 0)}
 ]
 
-var paso_actual = 0
+var paso_actual := 0
 var timer: Timer
 
-signal tutorial_terminado
-
-func _ready():
-	self.process_mode = Node.PROCESS_MODE_ALWAYS
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	timer = Timer.new()
 	timer.wait_time = 5.0
@@ -35,25 +35,31 @@ func _ready():
 	
 	_actualizar_paso()
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		_avanzar_paso()
 
-func _avanzar_paso():
+func _avanzar_paso() -> void:
 	timer.stop()
 	paso_actual += 1
 	if paso_actual >= pasos.size():
 		_terminar_tutorial()
-		return
-	_actualizar_paso()
+	else:
+		_actualizar_paso()
 
-func _terminar_tutorial():
-	emit_signal("tutorial_terminado")
-	queue_free()
-
-func _actualizar_paso():
+func _actualizar_paso() -> void:
 	var paso = pasos[paso_actual]
 	texto_explicacion.text = paso["texto"]
 	panel_resaltado.position = paso["pos"]
 	panel_resaltado.size = paso["size"]
 	timer.start()
+
+func _terminar_tutorial() -> void:
+	# Marcar tutorial como completado
+	var config = ConfigFile.new()
+	config.load("user://config.cfg")
+	config.set_value("tutorial", "completed", true)
+	config.save("user://config.cfg")
+	
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/map.tscn")
