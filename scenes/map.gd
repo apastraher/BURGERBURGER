@@ -5,50 +5,29 @@ extends Node2D
 @onready var nodo_dinero = $Dinero
 @onready var tutorial_scene = preload("res://scenes/tutorial.tscn")
 
-var tutorial_instance: Control = null
-
 func _ready() -> void:
-	# Cargar configuración temporal
+	# Verificar si debemos mostrar el tutorial
 	var config = ConfigFile.new()
 	if config.load("user://config.cfg") == OK:
-		var run_tutorial = config.get_value("temp", "run_tutorial", false)
-		config.erase_section("temp")  # Limpiar valor temporal
+		var should_run_tutorial = config.get_value("tutorial", "should_run", false)
+		config.set_value("tutorial", "should_run", false)  # Resetear
 		config.save("user://config.cfg")
 		
-		if run_tutorial:
+		if should_run_tutorial:
 			_iniciar_tutorial()
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	
-	# Configurar timer de juego
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	
 	if timer_node:
-		timer_node.tiempo_finalizado.connect(_on_timer_finalizado)
+		timer_node.tiempo_finalizado.connect(_on_timer_node_tiempo_finalizado)
 
 func _iniciar_tutorial():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	tutorial_instance = tutorial_scene.instantiate()
-	add_child(tutorial_instance)
-	tutorial_instance.process_mode = Node.PROCESS_MODE_ALWAYS
-	tutorial_instance.tutorial_terminado.connect(_on_tutorial_terminado)
+	var tutorial = tutorial_scene.instantiate()
+	add_child(tutorial)
 	get_tree().paused = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-func _on_tutorial_terminado():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
-	get_tree().paused = false
-	
-	# Marcar tutorial como completado
-	var config = ConfigFile.new()
-	config.load("user://config.cfg")
-	config.set_value("tutorial", "completed", true)
-	config.save("user://config.cfg")
-	
-	if tutorial_instance:
-		tutorial_instance.queue_free()
-		tutorial_instance = null
-
-func _on_timer_finalizado() -> void:
+func _on_timer_node_tiempo_finalizado() -> void:
 	get_tree().paused = false
 	
 	# Manejar transición de escena
