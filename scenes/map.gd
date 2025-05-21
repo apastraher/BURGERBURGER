@@ -19,7 +19,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	
 	if timer_node:
-		timer_node.tiempo_finalizado.connect(_on_timer_finalizado)
+		timer_node.tiempo_finalizado.connect(_on_timer_node_tiempo_finalizado)
 
 func _iniciar_tutorial():
 	var tutorial = tutorial_scene.instantiate()
@@ -27,7 +27,7 @@ func _iniciar_tutorial():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-func _on_timer_finalizado() -> void:
+func _on_timer_node_tiempo_finalizado() -> void:
 	get_tree().paused = false
 	
 	# Manejar transición de escena

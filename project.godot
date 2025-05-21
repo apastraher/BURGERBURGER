@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 Settings="*res://scenes/settings.gd"
 Fade="*res://scenes/fade.tscn"
 
+[debug]
+
+shapes/max_threads=-1
+shapes/run_on_separate_thread=false
+
 [display]
 
 window/size/viewport_width=640
