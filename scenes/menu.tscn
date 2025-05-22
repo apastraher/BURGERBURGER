@@ -89,8 +89,8 @@ offset_right = 202.0
 offset_bottom = 116.0
 theme_override_fonts/font = ExtResource("2_l6p16")
 theme_override_font_sizes/font_size = 30
-text = "VIDEOGAME 
-NAME"
+text = "BURGUER
+BURGUER!"
 vertical_alignment = 1
 
 [node name="TutorialDialog" type="ConfirmationDialog" parent="."]

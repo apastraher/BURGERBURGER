@@ -76,9 +76,6 @@ func _on_tutorial_closed():
 	tutorial_dialog.hide()
 
 func _on_opciones_pressed():
-	var fade = get_node_or_null("/root/Fade")
-	if is_instance_valid(fade):
-		await fade.fade_in(0.5)
 	get_tree().change_scene_to_file("res://scenes/opciones.tscn")
 
 func _on_salir_pressed():

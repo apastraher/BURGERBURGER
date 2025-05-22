@@ -3,7 +3,6 @@ extends CanvasLayer
 func _ready():
 	visible = false  # Asegura que el menú esté oculto al inicio
 	$CenterContainer/VBoxContainer/Salir.pressed.connect(_on_salir_pressed)
-	$CenterContainer/VBoxContainer/Volver.pressed.connect(_on_volver_pressed)
 	process_mode = Node.PROCESS_MODE_ALWAYS  # Para que funcione incluso cuando el juego está en pausa
 
 func _unhandled_input(event):
