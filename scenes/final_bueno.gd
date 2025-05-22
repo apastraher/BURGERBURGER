@@ -11,41 +11,23 @@ func _ready() -> void:
 	# Manejo robusto del efecto fade
 	fade = get_node_or_null("/root/Fade")
 	if is_instance_valid(fade):
-		fade.color_rect.modulate = Color(0, 0, 0, 1)
+		# Forzamos reinicio completo (LÍNEA NUEVA)
+		fade.reset_color_rect()
 		fade.color_rect.show()
 		await fade.fade_out(0.5)
 	else:
 		printerr("Advertencia: Nodo Fade no encontrado")
 
 func _on_salir_pressed() -> void:
-	# Evitar múltiples ejecuciones
 	if exiting:
 		return
-	
 	exiting = true
-	
-	# 1. Ejecutar animación de fade (si existe)
-	if is_instance_valid(fade):
-		await fade.fade_in(0.5)
-	
-	# 2. Cargar el menú principal de forma segura
+
 	var menu_path = "res://scenes/menu.tscn"
-	
-	# Verificar existencia del recurso
 	if not ResourceLoader.exists(menu_path):
-		printerr("Error: No se encontró la escena del menú en ", menu_path)
 		get_tree().quit()
 		return
-	
-	# 3. Cambiar a la escena del menú
-	var menu = load(menu_path)
-	get_tree().change_scene_to_packed(menu)
-	
-	# 4. Limpieza final
-	queue_free()
 
-# Manejo seguro al cerrar
-func _notification(what):
-	if what == NOTIFICATION_PREDELETE:
-		if is_instance_valid(fade):
-			fade.queue_free()
+	var menu = load(menu_path)
+
+	get_tree().change_scene_to_packed(menu)

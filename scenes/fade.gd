@@ -24,9 +24,18 @@ func _update_rect_size():
 func fade_in(duration: float = 1.0) -> void:
 	if not ready_completed:
 		await get_tree().process_frame
-	
+
+	# Forzar completamente transparente (incluso si antes ya lo era)
+	color_rect.color = Color(0, 0, 0, 0.0)
 	color_rect.show()
-	
+	color_rect.queue_redraw()  # Asegurar que se actualice
+
+	if anim_player.is_playing():
+		anim_player.stop()
+
+	# Restablecer el estado inicial de la animación
+	anim_player.seek(0, true)
+
 	if anim_player.has_animation("fade_in"):
 		anim_player.speed_scale = 1.0 / duration
 		anim_player.play("fade_in")
@@ -35,13 +44,29 @@ func fade_in(duration: float = 1.0) -> void:
 		var tween = create_tween()
 		tween.tween_property(color_rect, "color:a", 1.0, duration)
 		await tween.finished
-	
+
 	emit_signal("fade_completed")
+
+
+func reset_color_rect():
+	color_rect.color = Color(0, 0, 0, 0)  # Cambiado a transparente
+	color_rect.show()
 
 func fade_out(duration: float = 1.0) -> void:
 	if not ready_completed:
 		await get_tree().process_frame
-	
+
+	# Forzar completamente opaco (incluso si ya lo era)
+	color_rect.color = Color(0, 0, 0, 1.0)
+	color_rect.show()
+	color_rect.queue_redraw()  # Asegurar que se actualice visualmente
+
+	if anim_player.is_playing():
+		anim_player.stop()
+
+	# Reiniciar desde el inicio la animación
+	anim_player.seek(0, true)
+
 	if anim_player.has_animation("fade_out"):
 		anim_player.speed_scale = 1.0 / duration
 		anim_player.play("fade_out")
@@ -50,6 +75,6 @@ func fade_out(duration: float = 1.0) -> void:
 		var tween = create_tween()
 		tween.tween_property(color_rect, "color:a", 0.0, duration)
 		await tween.finished
-	
+
 	color_rect.hide()
 	emit_signal("fade_completed")

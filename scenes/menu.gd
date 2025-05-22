@@ -15,6 +15,11 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
 	
+	# Asegurar que el fade esté oculto al inicio
+	var fade = get_node_or_null("/root/Fade")
+	if is_instance_valid(fade):
+		fade.color_rect.hide()
+	
 	jugar_button.pressed.connect(_on_jugar_pressed)
 	opciones_button.pressed.connect(_on_opciones_pressed)
 	salir_button.pressed.connect(_on_salir_pressed)
@@ -27,6 +32,7 @@ func _ready():
 	
 	tutorial_dialog.confirmed.connect(_on_tutorial_accepted)
 	tutorial_dialog.canceled.connect(_on_tutorial_rejected)
+	tutorial_dialog.close_requested.connect(_on_tutorial_closed)
 
 func _on_jugar_pressed():
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
@@ -42,28 +48,42 @@ func _on_jugar_pressed():
 	tutorial_dialog.popup_centered()
 
 func _on_tutorial_accepted():
+	var fade = get_node_or_null("/root/Fade")
+	if is_instance_valid(fade):
+		await fade.fade_in(0.5)
+	
 	var config = ConfigFile.new()
 	config.load(config_path)
 	config.set_value("tutorial", "should_run", true)
 	config.save(config_path)
 	
+	fade.reset_color_rect()
 	get_tree().change_scene_to_file("res://scenes/map.tscn")
 
 func _on_tutorial_rejected():
+	var fade = get_node_or_null("/root/Fade")
+	if is_instance_valid(fade):
+		await fade.fade_in(0.5)
+	
 	var config = ConfigFile.new()
 	config.load(config_path)
 	config.set_value("tutorial", "should_run", false)
 	config.save(config_path)
 	
 	get_tree().change_scene_to_file("res://scenes/map.tscn")
+	
+func _on_tutorial_closed():
+	tutorial_dialog.hide()
 
 func _on_opciones_pressed():
+	var fade = get_node_or_null("/root/Fade")
+	if is_instance_valid(fade):
+		await fade.fade_in(0.5)
 	get_tree().change_scene_to_file("res://scenes/opciones.tscn")
 
 func _on_salir_pressed():
 	get_tree().quit()
 
-# Funciones para efectos visuales del mouse
 func _on_button_hovered(button: Button):
 	Input.set_custom_mouse_cursor(CURSOR_HOVER)
 	button.scale = Vector2(1.05, 1.05)
