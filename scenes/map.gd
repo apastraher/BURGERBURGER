@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var umbral_dinero: int = 0
+@export var umbral_dinero: int = 800
 @onready var timer_node = $TimerNode
 @onready var nodo_dinero = $Dinero
 @onready var tutorial_scene = preload("res://scenes/tutorial.tscn")

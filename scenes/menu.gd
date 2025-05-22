@@ -31,8 +31,8 @@ func _ready():
 		button.button_up.connect(_on_button_released.bind(button))
 	
 	tutorial_dialog.confirmed.connect(_on_tutorial_accepted)
-	tutorial_dialog.canceled.connect(_on_tutorial_rejected)
 	tutorial_dialog.close_requested.connect(_on_tutorial_closed)
+	tutorial_dialog.get_cancel_button().pressed.connect(_on_tutorial_rejected)
 
 func _on_jugar_pressed():
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
