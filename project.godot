@@ -20,6 +20,7 @@ config/icon="res://assets/Tilesets/UI/icon.png"
 
 Settings="*res://scenes/settings.gd"
 Fade="*res://scenes/fade.tscn"
+ControladorMusica="*res://scenes/controlador_musica.gd"
 
 [debug]
 

@@ -5,7 +5,14 @@ extends Node2D
 @onready var nodo_dinero = $Dinero
 @onready var tutorial_scene = preload("res://scenes/tutorial.tscn")
 
+# Añadido: carga de música ambiente (opcional si ya está asignada en el nodo)
+@onready var musica_ambiente: AudioStreamPlayer2D = $MusicaAmbiente
+
 func _ready() -> void:
+	# Reproducir música ambiente al empezar
+	if not musica_ambiente.playing:
+		musica_ambiente.play()
+
 	# Verificar si debemos mostrar el tutorial
 	var fade = get_node_or_null("/root/Fade")
 	var config = ConfigFile.new()
@@ -20,7 +27,6 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 
 	fade.reset_color_rect()
-	# Conexión segura al signal del timer
 	if timer_node and not timer_node.tiempo_finalizado.is_connected(_on_timer_node_tiempo_finalizado):
 		timer_node.tiempo_finalizado.connect(_on_timer_node_tiempo_finalizado)
 
@@ -34,7 +40,6 @@ func _on_timer_node_tiempo_finalizado() -> void:
 	get_tree().paused = false
 	
 	if Fade:
-		# Reiniciamos el fade antes de usarlo (LÍNEA NUEVA)
 		Fade.reset_color_rect()
 		Fade.fade_completed.connect(_cambiar_escena, CONNECT_ONE_SHOT)
 		await Fade.fade_in(1.0)

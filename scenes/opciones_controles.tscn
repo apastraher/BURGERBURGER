@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bikd11bsx3er0"]
+[gd_scene load_steps=5 format=3 uid="uid://bikd11bsx3er0"]
 
 [ext_resource type="Texture2D" uid="uid://b6enrrnknrcgj" path="res://assets/Tilesets/Objects/atras.png" id="1_o3spd"]
 [ext_resource type="Script" path="res://scenes/opciones_controles.gd" id="1_spf62"]
 [ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="3_nsswt"]
+[ext_resource type="AudioStream" uid="uid://crx52fh1dhc1k" path="res://assets/audio/sfx/click_sound.mp3" id="4_n43c5"]
 
 [node name="OpcionesControles" type="Control"]
 layout_mode = 3
@@ -88,6 +89,9 @@ text = "⮕"
 
 [node name="LabelDescripcion" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
 layout_mode = 2
+
+[node name="HoverSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n43c5")
 
 [connection signal="pressed" from="CanvasLayer/Panel/AtrasControles" to="." method="_on_atras_controles_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/CenterContainer/HBoxContainer/Anterior" to="." method="_on_anterior_pressed"]

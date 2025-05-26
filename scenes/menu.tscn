@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://co4uyuy2mstjt"]
+[gd_scene load_steps=12 format=3 uid="uid://co4uyuy2mstjt"]
 
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_a3etr"]
 [ext_resource type="StyleBox" uid="uid://bts3d6dlvsr7r" path="res://assets/buttonStyleHover.tres" id="2_1n87f"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dhku40msos4s" path="res://assets/ingredientes/tomate.png" id="8_cusub"]
 [ext_resource type="Texture2D" uid="uid://bcdytppgyh3hl" path="res://assets/ingredientes/plato.png" id="9_ratsy"]
 [ext_resource type="Texture2D" uid="uid://cbteup7p4mwcj" path="res://assets/ingredientes/pan.png" id="10_813m0"]
+[ext_resource type="AudioStream" uid="uid://crx52fh1dhc1k" path="res://assets/audio/sfx/click_sound.mp3" id="11_2tbnj"]
 
 [node name="Control" type="Control"]
 z_index = 101
@@ -142,3 +143,7 @@ z_index = 500
 position = Vector2(406.612, 254.991)
 scale = Vector2(4.40625, 4.40625)
 texture = ExtResource("10_813m0")
+
+[node name="HoverSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_2tbnj")
+bus = &"SFX"
