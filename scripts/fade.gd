@@ -25,15 +25,13 @@ func fade_in(duration: float = 1.0) -> void:
 	if not ready_completed:
 		await get_tree().process_frame
 
-	# Forzar completamente transparente (incluso si antes ya lo era)
 	color_rect.color = Color(0, 0, 0, 0.0)
 	color_rect.show()
-	color_rect.queue_redraw()  # Asegurar que se actualice
+	color_rect.queue_redraw() 
 
 	if anim_player.is_playing():
 		anim_player.stop()
 
-	# Restablecer el estado inicial de la animación
 	anim_player.seek(0, true)
 
 	if anim_player.has_animation("fade_in"):
@@ -49,22 +47,20 @@ func fade_in(duration: float = 1.0) -> void:
 
 
 func reset_color_rect():
-	color_rect.color = Color(0, 0, 0, 0)  # Cambiado a transparente
+	color_rect.color = Color(0, 0, 0, 0) 
 	color_rect.show()
 
 func fade_out(duration: float = 1.0) -> void:
 	if not ready_completed:
 		await get_tree().process_frame
 
-	# Forzar completamente opaco (incluso si ya lo era)
 	color_rect.color = Color(0, 0, 0, 1.0)
 	color_rect.show()
-	color_rect.queue_redraw()  # Asegurar que se actualice visualmente
+	color_rect.queue_redraw() 
 
 	if anim_player.is_playing():
 		anim_player.stop()
 
-	# Reiniciar desde el inicio la animación
 	anim_player.seek(0, true)
 
 	if anim_player.has_animation("fade_out"):

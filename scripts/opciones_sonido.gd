@@ -16,7 +16,6 @@ func _ready():
 	music_slider.value = Settings.load_volume("Music")
 	sfx_slider.value = Settings.load_volume("SFX")
 	
-	# Guardar valor inicial de SFX
 	previous_sfx_value = sfx_slider.value
 	
 	# Aplicar volúmenes
@@ -26,7 +25,6 @@ func _ready():
 	
 	update_volume_labels()
 	
-	# Conectar señales
 	master_slider.value_changed.connect(_on_master_slider_value_changed)
 	music_slider.value_changed.connect(_on_music_slider_value_changed)
 	sfx_slider.value_changed.connect(_on_sfx_slider_value_changed)
@@ -66,5 +64,4 @@ func _on_sfx_slider_value_changed(value: float):
 	previous_sfx_value = value
 
 func _on_atras_sonido_pressed() -> void:
-	# No necesitamos guardar aquí porque ya se guarda en cada cambio
 	get_tree().change_scene_to_file("res://scenes/opciones.tscn")

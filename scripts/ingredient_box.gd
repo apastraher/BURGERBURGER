@@ -1,10 +1,10 @@
 extends Area2D
 class_name CajaIngrediente
 
-@export var ingrediente: String = "":  # Asigna valor por defecto
+@export var ingrediente: String = "": 
 	set(value):
 		ingrediente = value
-		# Actualiza la textura si el nodo está listo
+
 		if is_inside_tree():
 			cargar_textura_ingrediente()
 

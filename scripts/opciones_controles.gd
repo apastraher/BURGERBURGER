@@ -9,8 +9,6 @@ extends Control
 @onready var anterior_button = $CanvasLayer/Panel/VBoxContainer/CenterContainer/HBoxContainer/Anterior
 @onready var posterior_button = $CanvasLayer/Panel/VBoxContainer/CenterContainer/HBoxContainer/Posterior
 @onready var atras_button = $CanvasLayer/Panel/AtrasControles
-
-# Añadido: nodo para reproducir sonido al hacer hover
 @onready var hover_sound = $HoverSoundPlayer
 
 var scheme_textures = {
@@ -34,10 +32,8 @@ func _ready():
 	anterior_button.grab_focus()
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 
-	# Conectar señales para sonido hover
 	for button in [anterior_button, posterior_button, atras_button]:
 		button.mouse_entered.connect(_on_button_hovered)
-		button.mouse_exited.connect(_on_button_unhovered)
 
 func _on_joy_connection_changed(device_id, connected):
 	update_display()
@@ -102,7 +98,3 @@ func _on_posterior_pressed():
 
 func _on_button_hovered():
 	hover_sound.play()
-
-func _on_button_unhovered():
-	# Aquí podrías parar el sonido si quieres, o dejarlo sonar completo
-	pass
