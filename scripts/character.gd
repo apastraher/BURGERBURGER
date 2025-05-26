@@ -67,7 +67,6 @@ func manejar_interaccion():
 func recibir_recompensa(cantidad: int):
 	dinero += cantidad
 	label_dinero.text = str(dinero)
-	print("Dinero recibido: ", cantidad, " | Total: ", dinero)
 
 func tiene_pedido_correcto(pedido_cliente: Array) -> bool:
 	if not ingrediente_actual or typeof(ingrediente_actual) != TYPE_DICTIONARY:
@@ -142,8 +141,6 @@ func mostrar_ingredientes_en_mano(data: Dictionary):
 			hand_sprite.scale = Vector2(0.7, 0.7)
 			hand_sprite.visible = true
 
-# Dentro de la función `soltar_ingrediente()`
-
 func soltar_ingrediente():
 	if not ingrediente_actual or not encimera_cercana:
 		return
@@ -176,9 +173,6 @@ func soltar_ingrediente():
 	
 	if exito:
 		limpiar_manos()
-		print("Ingrediente colocado en la mesa.")
-
-
 
 func limpiar_manos():
 	ingrediente_actual = null

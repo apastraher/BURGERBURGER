@@ -5,7 +5,7 @@ static func load_scheme(scheme: int):
 	for action in InputMap.get_actions():
 		InputMap.action_erase_events(action)
 	
-	# Configurar acciones según el esquema
+	# Configurar acciones
 	match scheme:
 		0:  # Teclado WASD
 			_setup_key(KEY_A, "left")

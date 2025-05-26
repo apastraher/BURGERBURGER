@@ -93,12 +93,10 @@ func _quemar_carne():
 	timer.stop()
 	progress_bar_quemando.visible = false
 
-
-# Cambiado el nombre de _recoger_ingrediente a _dar_ingrediente
 func _dar_ingrediente(jugador: Node2D):
 	if jugador.has_method("recibir_ingrediente") and jugador.ingrediente_actual == null:
 		var tipo_ingrediente = "carne_quemada" if estado == Estado.QUEMADA else "carne_cocinada"
-		jugador.recibir_ingrediente(tipo_ingrediente)  # Usando el nuevo nombre
+		jugador.recibir_ingrediente(tipo_ingrediente)
 		_resetear_sarten()
 
 func _resetear_sarten():
@@ -111,6 +109,3 @@ func _resetear_sarten():
 	progress_bar_cocinando.visible = false
 	progress_bar_quemando.visible = false
 	timer.stop()
-	
-	if has_node("Humo"):
-		$Humo.emitting = false

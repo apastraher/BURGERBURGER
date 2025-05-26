@@ -4,8 +4,6 @@ extends Node2D
 @onready var timer_node = $TimerNode
 @onready var nodo_dinero = $Dinero
 @onready var tutorial_scene = preload("res://scenes/tutorial.tscn")
-
-# Añadido: carga de música ambiente (opcional si ya está asignada en el nodo)
 @onready var musica_ambiente: AudioStreamPlayer2D = $MusicaAmbiente
 
 func _ready() -> void:

@@ -16,7 +16,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
 
-	# Iniciar música de fondo si no está sonando ya
+	# Iniciar música de fondo
 	if not ControladorMusica.music_started:
 		ControladorMusica.music_player.play()
 		ControladorMusica.music_started = true
