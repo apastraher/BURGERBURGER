@@ -12,11 +12,6 @@ extends Node2D
 
 signal tiempo_finalizado
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("f2"):  # Tecla de debug para finalizar el tiempo
-		real_time_remaining = 0
-		_on_timer_timeout()
-
 func _ready() -> void:
 	# Reinicia variables
 	real_time_remaining = real_total_time
