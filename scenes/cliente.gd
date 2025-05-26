@@ -25,6 +25,7 @@ var moviendose: bool = false
 @onready var animated_sprite: AnimatedSprite2D = $Character/Sprite2D
 @onready var aldeano_sound = $Character/AldeanoSound
 @onready var aldeano_enfadado_sound = $Character/AldeanoEnfadadoSound
+@onready var dinero_sonido: AudioStreamPlayer2D = $DineroSonido
 
 var ingredientes_texturas = {
 	"pan": preload("res://assets/ingredientes/pan.png"),
@@ -177,6 +178,7 @@ func verificar_entrega(jugador: CharacterBody2D):
 
 		if correctos == pedido.size():
 			finalizar_interaccion(Estado.SATISFECHO)
+			dinero_sonido.play()
 		else:
 			aldeano_enfadado_sound.play()
 			finalizar_interaccion(Estado.ENOJADO)

@@ -10,15 +10,17 @@ config_version=5
 
 [application]
 
-config/name="TFGProject"
+config/name="BURGUERBURGUER!"
+config/version="v1.0.0"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/Tilesets/UI/icon.png"
 
 [autoload]
 
 Settings="*res://scenes/settings.gd"
 Fade="*res://scenes/fade.tscn"
+ControladorMusica="*res://scenes/controlador_musica.gd"
 
 [debug]
 

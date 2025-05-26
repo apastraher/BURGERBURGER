@@ -2,16 +2,16 @@ extends CanvasLayer
 
 var fade
 var exiting := false  # Bandera para controlar el estado de salida
+@onready var final = $AnimatedSprite2D
 
 func _ready() -> void:
 	# Configuración inicial segura
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().paused = false
-	
+	final.play("default")
 	# Manejo robusto del efecto fade
 	fade = get_node_or_null("/root/Fade")
 	if is_instance_valid(fade):
-		# Forzamos reinicio completo (LÍNEA NUEVA)
 		fade.reset_color_rect()
 		fade.color_rect.show()
 		await fade.fade_out(0.5)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt56xyu45ppuo"]
+[gd_scene load_steps=5 format=3 uid="uid://dt56xyu45ppuo"]
 
 [ext_resource type="Script" path="res://scenes/opciones.gd" id="1_2qp3l"]
 [ext_resource type="Texture2D" uid="uid://b6enrrnknrcgj" path="res://assets/Tilesets/Objects/atras.png" id="1_frxfx"]
 [ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="3_delb1"]
+[ext_resource type="AudioStream" uid="uid://crx52fh1dhc1k" path="res://assets/audio/sfx/click_sound.mp3" id="4_i8pib"]
 
 [node name="Opciones" type="Control"]
 layout_mode = 3
@@ -76,6 +77,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_delb1")
 theme_override_font_sizes/font_size = 25
 text = "Controles"
+
+[node name="HoverSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_i8pib")
+bus = &"SFX"
 
 [connection signal="pressed" from="CanvasLayer/Panel/Atras" to="." method="_on_atras_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Sonido" to="." method="_on_sonido_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c7cu56adu8gfc"]
+[gd_scene load_steps=29 format=3 uid="uid://c7cu56adu8gfc"]
 
 [ext_resource type="Script" path="res://scenes/cliente.gd" id="1_5t4ij"]
 [ext_resource type="Texture2D" uid="uid://bm5rkxhgbf1im" path="res://assets/Tilesets/Objects/exclamacion.png" id="2_7dqka"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ceghac51oivec" path="res://assets/character/PJModelWalk.png" id="6_gi1f1"]
 [ext_resource type="AudioStream" uid="uid://cyaxenjoqrdsu" path="res://assets/audio/sfx/aldeano_sound.mp3" id="7_j8hyr"]
 [ext_resource type="AudioStream" uid="uid://drghwp7x55ulx" path="res://assets/audio/sfx/aldeano_enfadado.mp3" id="8_fj2j1"]
+[ext_resource type="AudioStream" uid="uid://cbalqiyqn4qlx" path="res://assets/audio/sfx/cash_sound.mp3" id="9_ksti0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jsaw"]
 bg_color = Color(0.0862745, 0.0862745, 0.0862745, 0.776471)
@@ -211,3 +212,6 @@ bus = &"SFX"
 stream = ExtResource("8_fj2j1")
 volume_db = -5.073
 bus = &"SFX"
+
+[node name="DineroSonido" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ksti0")
