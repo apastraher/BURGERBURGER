@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://ts5neplx4gtg"]
 
 [ext_resource type="Texture2D" uid="uid://dgvaxw7ypmkgn" path="res://assets/scenes/final_good-sheet.png" id="1_71r05"]
-[ext_resource type="Script" path="res://scenes/final_bueno.gd" id="1_qjvno"]
-[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="2_ecv5h"]
+[ext_resource type="Script" path="res://scripts/final_bueno.gd" id="1_qjvno"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_ecv5h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7n64"]
 atlas = ExtResource("1_71r05")
@@ -54,7 +54,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer2" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_qjvno")
 

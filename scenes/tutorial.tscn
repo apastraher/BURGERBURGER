@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=4 uid="uid://r30k0ytab6tk"]
 
-[ext_resource type="Script" path="res://scenes/tutorial.gd" id="1_3an0n"]
-[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="2_poh4n"]
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_3an0n"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_poh4n"]
 [ext_resource type="Texture2D" uid="uid://bv0qumujv73c3" path="res://assets/Tilesets/Objects/roguelikeIndoor_transparent.png" id="3_syeaq"]
 [ext_resource type="Texture2D" uid="uid://ck4twatnjsv7u" path="res://assets/Tilesets/Objects/atlas_16x.png" id="4_lik66"]
 [ext_resource type="Texture2D" uid="uid://dnjc1iu23tpij" path="res://assets/Tilesets/Flat/Wooden_House_Walls_Tilset.png" id="5_ewlt5"]

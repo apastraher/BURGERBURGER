@@ -18,9 +18,9 @@ config/icon="res://assets/Tilesets/UI/icon.png"
 
 [autoload]
 
-Settings="*res://scenes/settings.gd"
+Settings="*res://scripts/settings.gd"
 Fade="*res://scenes/fade.tscn"
-ControladorMusica="*res://scenes/controlador_musica.gd"
+ControladorMusica="*res://scripts/controlador_musica.gd"
 
 [debug]
 

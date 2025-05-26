@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://ddbyb28yh3aw7"]
 
-[ext_resource type="Script" path="res://scenes/character.gd" id="1_77vx8"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_77vx8"]
 [ext_resource type="Texture2D" uid="uid://hrsry5r73qxd" path="res://assets/character/PJModelIdle.png" id="1_heusq"]
 [ext_resource type="Texture2D" uid="uid://dmjwnlljmbppn" path="res://assets/character/PJModelGrab.png" id="2_2r2u0"]
 [ext_resource type="Texture2D" uid="uid://ceghac51oivec" path="res://assets/character/PJModelWalk.png" id="2_453to"]
