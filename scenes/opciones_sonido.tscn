@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ditgmekpyfscw"]
 
-[ext_resource type="Script" path="res://scenes/opciones_sonido.gd" id="1_gpntw"]
+[ext_resource type="Script" path="res://scripts/opciones_sonido.gd" id="1_gpntw"]
 [ext_resource type="Texture2D" uid="uid://b6enrrnknrcgj" path="res://assets/Tilesets/Objects/atras.png" id="2_3qtba"]
-[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="3_2styi"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/fonts/Jersey10-Regular.ttf" id="3_2styi"]
 [ext_resource type="AudioStream" uid="uid://crpx5fda6wlxr" path="res://assets/audio/sfx/pick_item_pop.wav" id="4_0jxvo"]
 
 [node name="OpcionesSonido" type="Control"]

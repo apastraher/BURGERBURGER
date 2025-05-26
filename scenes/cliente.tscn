@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://c7cu56adu8gfc"]
 
-[ext_resource type="Script" path="res://scenes/cliente.gd" id="1_5t4ij"]
+[ext_resource type="Script" path="res://scripts/cliente.gd" id="1_5t4ij"]
 [ext_resource type="Texture2D" uid="uid://bm5rkxhgbf1im" path="res://assets/Tilesets/Objects/exclamacion.png" id="2_7dqka"]
 [ext_resource type="Texture2D" uid="uid://dmjwnlljmbppn" path="res://assets/character/PJModelGrab.png" id="3_ah2ul"]
 [ext_resource type="Texture2D" uid="uid://c4kjhb2hxjniw" path="res://assets/character/PJModelWalkGrab.png" id="4_75pm5"]

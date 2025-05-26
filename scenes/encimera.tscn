@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bu0a4jlr28v05"]
 
 [ext_resource type="Texture2D" uid="uid://ck4twatnjsv7u" path="res://assets/Tilesets/Objects/atlas_16x.png" id="1_ce5d1"]
-[ext_resource type="Script" path="res://scenes/encimera.gd" id="1_exrpv"]
+[ext_resource type="Script" path="res://scripts/encimera.gd" id="1_exrpv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yll2f"]
 size = Vector2(64, 44)

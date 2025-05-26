@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://co4uyuy2mstjt"]
 
-[ext_resource type="Script" path="res://scenes/menu.gd" id="1_a3etr"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_a3etr"]
 [ext_resource type="StyleBox" uid="uid://bts3d6dlvsr7r" path="res://assets/buttonStyleHover.tres" id="2_1n87f"]
-[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="2_l6p16"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_l6p16"]
 [ext_resource type="StyleBox" uid="uid://das217cjk4pqk" path="res://assets/ButtonStyleNormal.tres" id="3_uromm"]
 [ext_resource type="Texture2D" uid="uid://dvi4ipbtlgcmt" path="res://assets/ingredientes/carne_cocinada.png" id="5_q7xye"]
 [ext_resource type="Texture2D" uid="uid://b6napedxrndex" path="res://assets/ingredientes/lechuga.png" id="6_g5vtg"]

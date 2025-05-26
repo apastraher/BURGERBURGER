@@ -17,6 +17,7 @@ var pasos = [
 	{"texto": "En la mesa podrás dejar los ingredientes o poner los platos para emplatar los pedidos.\n\n(Haz clic para continuar)", "pos": Vector2(260, 176), "size": Vector2(52, 36)},
 	{"texto": "En la papelera puedes tirar lo que no vayas a usar. ¡Cuidado con no meterte!\n\n(Haz clic para continuar)", "pos": Vector2(395, 194), "size": Vector2(21, 22)},
 	{"texto": "Cuando se te acerque un cliente, acércate a él para atenderle.\n\n(Haz clic para continuar)", "pos": Vector2(396, 154), "size": Vector2(57, 35)},
+	{"texto": "Recuerda que el orden de los ingredientes para emplatar es de abajo hacia arriba.\n\n(Haz clic para continuar)", "pos": Vector2(396, 154), "size": Vector2(57, 35)},
 	{"texto": "Cuando tengas su pedido hecho entrégaselo lo antes posible.\n\n(Haz clic para continuar)", "pos": Vector2(396, 154), "size": Vector2(57, 35)},
 	{"texto": "Espero que vaya todo bien, ¡suerte!\n\n(Haz clic para terminar)", "pos": Vector2(0, 0), "size": Vector2(0, 0)}
 ]

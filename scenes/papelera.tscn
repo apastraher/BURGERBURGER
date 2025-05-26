@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://tpgd1oxg5sg5"]
 
-[ext_resource type="Script" path="res://scenes/papelera.gd" id="1_cy1p0"]
+[ext_resource type="Script" path="res://scripts/papelera.gd" id="1_cy1p0"]
 [ext_resource type="Texture2D" uid="uid://dm55wixncihml" path="res://assets/Tilesets/Objects/papelera.png" id="1_kktac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5303f"]

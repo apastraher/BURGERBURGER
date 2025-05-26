@@ -9,7 +9,7 @@ func _ready():
 		add_child(music_player)
 
 	music_player.bus = "Music"
-	music_player.stream = preload("res://assets/audio/ChillLofiR.mp3")
+	music_player.stream = preload("res://assets/audio/music/ChillLofiR.mp3")
 	music_player.volume_db = -10  # Opcional: volumen más bajo
 
 	if not music_started:
