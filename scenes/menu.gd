@@ -8,12 +8,18 @@ const CURSOR_CLICK := preload("res://assets/Tilesets/Mouse/click_mouse.png")
 @onready var opciones_button: Button = $CenterContainer/VBoxContainer/Opciones
 @onready var salir_button: Button = $CenterContainer/VBoxContainer/Salir
 @onready var tutorial_dialog: ConfirmationDialog = $TutorialDialog
+@onready var hover_sound: AudioStreamPlayer2D = $HoverSoundPlayer
 
 var config_path = "user://config.cfg"
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
+
+	# Iniciar música de fondo si no está sonando ya
+	if not ControladorMusica.music_started:
+		ControladorMusica.music_player.play()
+		ControladorMusica.music_started = true
 	
 	# Asegurar que el fade esté oculto al inicio
 	var fade = get_node_or_null("/root/Fade")
@@ -31,8 +37,8 @@ func _ready():
 		button.button_up.connect(_on_button_released.bind(button))
 	
 	tutorial_dialog.confirmed.connect(_on_tutorial_accepted)
-	tutorial_dialog.canceled.connect(_on_tutorial_rejected)
 	tutorial_dialog.close_requested.connect(_on_tutorial_closed)
+	tutorial_dialog.get_cancel_button().pressed.connect(_on_tutorial_rejected)
 
 func _on_jugar_pressed():
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL)
@@ -52,6 +58,10 @@ func _on_tutorial_accepted():
 	if is_instance_valid(fade):
 		await fade.fade_in(0.5)
 	
+	# Detener música de fondo
+	ControladorMusica.music_player.stop()
+	ControladorMusica.music_started = false
+	
 	var config = ConfigFile.new()
 	config.load(config_path)
 	config.set_value("tutorial", "should_run", true)
@@ -65,6 +75,10 @@ func _on_tutorial_rejected():
 	if is_instance_valid(fade):
 		await fade.fade_in(0.5)
 	
+	# Detener música de fondo
+	ControladorMusica.music_player.stop()
+	ControladorMusica.music_started = false
+	
 	var config = ConfigFile.new()
 	config.load(config_path)
 	config.set_value("tutorial", "should_run", false)
@@ -76,9 +90,6 @@ func _on_tutorial_closed():
 	tutorial_dialog.hide()
 
 func _on_opciones_pressed():
-	var fade = get_node_or_null("/root/Fade")
-	if is_instance_valid(fade):
-		await fade.fade_in(0.5)
 	get_tree().change_scene_to_file("res://scenes/opciones.tscn")
 
 func _on_salir_pressed():
@@ -87,6 +98,7 @@ func _on_salir_pressed():
 func _on_button_hovered(button: Button):
 	Input.set_custom_mouse_cursor(CURSOR_HOVER)
 	button.scale = Vector2(1.05, 1.05)
+	hover_sound.play()
 
 func _on_button_unhovered(button: Button):
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL)

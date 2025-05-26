@@ -1,3 +1,38 @@
-[gd_scene format=3 uid="uid://dhevbr7771oyn"]
+[gd_scene load_steps=4 format=3 uid="uid://dhevbr7771oyn"]
+
+[ext_resource type="Texture2D" uid="uid://lshj0n8q2vd6" path="res://assets/scenes/final_bad.png" id="1_f4pov"]
+[ext_resource type="Script" path="res://scenes/final_malo.gd" id="1_yy5tl"]
+[ext_resource type="FontFile" uid="uid://bxvgd8u2woa4k" path="res://assets/Tilesets/Objects/Jersey10-Regular.ttf" id="2_cga34"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_yy5tl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("1_f4pov")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 90.0
+offset_top = 24.0
+offset_right = 555.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cga34")
+theme_override_font_sizes/font_size = 70
+text = "Vuelve a intentarlo"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 118.0
+offset_top = 304.0
+offset_right = 495.0
+offset_bottom = 340.0
+scale = Vector2(1.067, 0.948)
+alignment = 1
+
+[node name="Salir" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cga34")
+theme_override_font_sizes/font_size = 25
+text = "Salir"
+
+[connection signal="pressed" from="HBoxContainer/Salir" to="." method="_on_salir_pressed"]
