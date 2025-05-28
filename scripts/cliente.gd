@@ -72,7 +72,11 @@ func mover_a_posicion(destino: Vector2):
 	return true
 
 func salir():
-	animated_sprite.play("grab_walk")
+	if estado_actual == Estado.ENOJADO:
+		animated_sprite.play("walk")
+	else:
+		animated_sprite.play("grab_walk")
+		
 	moviendose = true
 	var tween = create_tween()
 	await mover_a_posicion(punto_salida.global_position)
